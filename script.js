@@ -15,3 +15,52 @@
 
     4. Потренироваться и переписать цикл еще двумя способами
 */
+
+const numberOfFilms = prompt('Сколько фильмов вы уже посмотрели?', '');
+
+const personalMovieDB = {
+    count: numberOfFilms,
+    movies: {},
+    actors: {},
+    genres: [],
+    privat: false
+};
+
+// for (let i = 0; i < 2; i++) {
+//     let a = prompt('Один из последних просмотренных фильмов', ''),
+//         b = +prompt('На сколько оцените его?', '');
+    
+//         if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+//             personalMovieDB[a] = b;
+//         } else {
+//             console.log('Error');
+//             i--; // Дикремент
+//         }
+// }
+
+let i = 0;
+while ( i < 2 ) {
+    let a = prompt('Один из последних просмотренных фильмов', ''),
+        b = +prompt('На сколько оцените его?', '');
+    
+        if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+            personalMovieDB[a] = b;
+        } else {
+            console.log('Error');
+            i--; // Дикремент
+        }
+    i++;
+}
+
+let c = personalMovieDB.count;
+
+if ( c < 10 ) {
+    alert("Просмотренно довольно мало фильмов");
+} else if ( c >= 10 && c <= 30 ) {
+    alert("Вы классный зритель");
+} else if ( c >= 30 ) {
+    alert("Вы киноман");
+} else {
+    alert("Произошла ошибка");
+}
+
