@@ -1,66 +1,69 @@
 "use strict";
 
-/*  
-    адание урока
+// Function Declaration
+    /*
+        Создается ДО начала выполнения скрипта. 
+        Можно вызвать перед объявлением
+    */
 
-    1. Автоматизировать вопросы пользователю про фильмы при помощи цикла
+    // function foo() {
+    //     // somthing code
+    // }
 
-    2. Сделать так, чтобы пользователь не мог оставить ответ в виде пустой строки,
-    отменить ответ или ввести название фильма длиннее, чем 50 символов. Если это происходит - 
-    возвращаем пользователя к вопросам опять. (К любой строке можно обратиться как str.length - и получить ее длину)
+// Function expression
+    /*
+        Создается только тогда, когда доходит поток кода.
+        Можно вызвать только после обхявления
+    */
 
-    3. При помощи условий проверить personalMoviesDB.count, и если он меньше 10 - вывести сообщение
-    "Просмотренно довольно мало фильмов", если от 10 до 30 - "Вы классный зритель", а если больше - "Вы киноман". 
-    А если не подошло ни к одному варианту - "Произошла ошибка".
+    // let foo = function () {
+    //     // somthing code
+    // }
 
-    4. Потренироваться и переписать цикл еще двумя способами
-*/
+// Стрелочна функция
+    /*
+        Не имеет своего контекста (this)
+    */
 
-const numberOfFilms = prompt('Сколько фильмов вы уже посмотрели?', '');
+    // () => {
 
-const personalMovieDB = {
-    count: numberOfFilms,
-    movies: {},
-    actors: {},
-    genres: [],
-    privat: false
+    // }
+
+
+let num = 20;
+
+function showFirstMessage(text) {
+    console.log(text);
+    console.log(num);
+}
+showFirstMessage('Run Forest, Run!');
+console.log(num);
+
+function calc(a, b) {
+    return (a * b);
+}
+console.log(calc(3, 4));
+console.log(calc(3, 2));
+console.log(calc(3, 3));
+
+function ret() {
+    let num = 50;
+
+    //
+
+    return num;
+}
+
+const anotherNum = ret();
+console.log(anotherNum);
+
+const logger = function() {
+    console.log('Hello');
 };
 
-// for (let i = 0; i < 2; i++) {
-//     let a = prompt('Один из последних просмотренных фильмов', ''),
-//         b = +prompt('На сколько оцените его?', '');
-    
-//         if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-//             personalMovieDB[a] = b;
-//         } else {
-//             console.log('Error');
-//             i--; // Дикремент
-//         }
-// }
+logger();
 
-let i = 0;
-while ( i < 2 ) {
-    let a = prompt('Один из последних просмотренных фильмов', ''),
-        b = +prompt('На сколько оцените его?', '');
-    
-        if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-            personalMovieDB[a] = b;
-        } else {
-            console.log('Error');
-            i--; // Дикремент
-        }
-    i++;
-}
-
-let c = personalMovieDB.count;
-
-if ( c < 10 ) {
-    alert("Просмотренно довольно мало фильмов");
-} else if ( c >= 10 && c <= 30 ) {
-    alert("Вы классный зритель");
-} else if ( c >= 30 ) {
-    alert("Вы киноман");
-} else {
-    alert("Произошла ошибка");
-}
-
+const calcLine = (a, b) => {
+    console.log('1');
+    return a + b;
+};
