@@ -1,51 +1,107 @@
 "use strict";
 
-const arr = [1, 12, 43, 26, 8];
+// let a = 5,
+//     b = a;
 
-arr.sort(compareNum);
+// b = b + 5;
 
-function compareNum(a, b) {
-    return a - b;
+// console.log(b);
+// console.log(a);
+
+// const obj = {
+//     a: 5,
+//     b: 1
+// };
+
+// const copy = obj; // Не сам объект - а ссылку на объект
+
+// copy.a = 10;
+
+// console.log(copy);
+// console.log(obj);
+
+
+// Поверхностная копия объекта 
+function copy(mainObj) {
+    let objCopy = {};
+
+    let key;
+    for(key in mainObj) {
+        objCopy[key] = mainObj[key];
+    }
+
+    return objCopy;
 }
 
-console.log(arr);
+const numbers = {
+    a: 2,
+    b: 5,
+    c: {
+        x: 7,
+        y: 4
+    }
+};
 
-// arr.pop(); // удаление последний эл. с конца массива
-// arr.push(10); // добавление элемента в конец массива
-// arr.shift(); // удаляет из массива первый элемент и возвращает его
-// arr.unshift('a'); // добавляет элемент в начало массива
-// arr.split(s); // превращает строку в массив, s - разделитель
-// arr.join(s); // превращает массив в сроку, s - разделитель
-// delete arr[1]; // Удаляет второй элемент
-// arr.splice(index, count, elem1...); // удалить count элементов, начиная с index и заменить на элементы elem1
-// arr.slice(begin, end); // копирует часть массива с begin до end не включая
-// arr.sort(fn); // сортировка массива. Если не передать функцию сравнения - сортирует элементы как строки
-// arr.reverse(); // меняют порядок элементов на обратный
-// arr.concat(item1...); // создает новый массив, в который копируются элемениы из arr, а также item1...
+const newNumbers = copy(numbers);
 
+newNumbers.a = 10;
 
-// Методы перебора
+// console.log(newNumbers);
+// console.log(numbers);
 
-// arr.forEach
-// arr.map
-// arr.every/some
-// arr.filter
-// arr.reduce
+// 2й способ клонирования
 
+const add = {
+    d: 17,
+    e: 20
+};
 
-// for (let i = 0; i < arr.length; i++) {
-//     console.log(arr[i]);
-// }
+// console.log(Object.assign(numbers, add));
 
-// for (let j of arr) {
-//     console.log(j);
-// }
+const clone = Object.assign({}, add);
 
-// arr.forEach(function(item, i, arr){
-//     console.log(`${i}: ${item} внутри массива ${arr}`);
-// });
+clone.d = 21;
 
-// const str = prompt('', '');
-// const products = str.split(', ');
-// products.sort();
-// console.log(products.join('; '));
+// console.log(clone);
+// console.log(add);
+
+// 3й способ клонирования
+// const oldArr = ['a', 'b', 'c'];
+// const newArr = oldArr.slice();
+
+// newArr[1] = 'asddsaasd'
+// console.log(newArr);
+// console.log(oldArr);
+
+// 4й способ клонирования
+
+const video = ['youtube', 'vimeo', 'rutube'];
+const blogs = ['wordpress', 'livejournal', 'blogger'];
+const internet = [...video, ...blogs];
+
+console.log(internet);
+
+function log(a, b, c) {
+    console.log(a);
+    console.log(b);
+    console.log(c);
+}
+
+const num = [2, 5, 7];
+
+log(...num);
+
+const array = ['a', 'b'];
+const newArray = [...array];
+
+const q = {
+    one: 1,
+    two: 2
+};
+
+const newQ = {...q};
+
+newQ.one = 20;
+
+console.log(newQ);
+console.log(q);
