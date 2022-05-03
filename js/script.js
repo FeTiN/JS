@@ -1,58 +1,46 @@
+/* Задания на урок:
+
+1) Удалить все рекламные блоки со страницы (правая часть сайта)
+
+2) Изменить жанр фильма, поменять "комедия" на "драма"
+
+3) Изменить задний фон постера с фильмом на изображение "bg.jpg". Оно лежит в папке img.
+Реализовать только при помощи JS
+
+4) Список фильмов на странице сформировать на основании данных из этого JS файла.
+Отсортировать их по алфавиту 
+
+5) Добавить нумерацию выведенных фильмов */
+
 'use strict';
 
-const box = document.getElementById('box'),
-      btns = document.getElementsByTagName('button'),
-      circles = document.getElementsByClassName('circle'),
-      hearts = document.querySelectorAll('.heart'),
-      oneHeart = document.querySelector('.heart'),
-      wrapper = document.querySelector('.wrapper');
+const movieDB = {
+    movies: [
+        "Логан",
+        "Лига справедливости",
+        "Ла-ла лэнд",
+        "Двваыв",
+        "Одержимость",
+        "Скотт Пилигрим против..."
+    ]
+};
 
+const promoAdv = document.querySelector('.promo__adv'),
+      promoGenre = document.querySelector('.promo__genre'),
+      promoBg = document.querySelector('.promo__bg'),
+      promoInteractiveList = document.querySelector('.promo__interactive-list');
 
-// console.log(box);
-// console.log(btns[0]);
-// console.log((circles));
-// console.log(oneHeart);
-// hearts.forEach(item => {
-//     console.log(item);
-// });
-
-// box.style.backgroundColor = 'blue';
-// box.style.width = '500px';
-
-box.style.cssText = `background-color: blue; width: 500px`;
-
-btns[1].style.borderRadius = '100%';
-circles[0].style.backgroundColor = 'blue';
-
-hearts.forEach(item => {
-    item.style.backgroundColor = 'blue';
+let listFilter = [];
+movieDB.movies.sort().forEach((item, index) => {
+    listFilter += `
+        <li class="promo__interactive-item">${index + 1}. ${item}
+            <div class="delete"></div>
+        </li>
+    `;
 });
 
-const div = document.createElement('div');
-// const text = document.createTextNode('Some text');
+promoInteractiveList.innerHTML = listFilter;
 
-div.classList.add('black');
-
-// wrapper.append(div); // add in end box
-// wrapper.appendChild(div); - old ver
-
-// wrapper.prepend(div); - add in start box
-
-// hearts[0].before(div);
-// hearts[0].after(div);
-
-// wrapper.insertBefore(div, hearts[1]); - old ver
-
-// circles[0].remove();
-// wrapper.removeChild(hearts[0]); - old ver
-
-// hearts[0].replaceWith(circles[0]); - changed element
-// wrapper.replaceChild(circles[0], hearts[0]); - old ver
-
-div.innerHTML = "<h1>Hello World</h1>";
-
-// div.textContent = "<h1>Hello World</h1>";
-
-div.insertAdjacentHTML("afterbegin", "<h2>Hello</h2>");
-
-
+promoBg.style.background = "url('./img/bg.jpg')";
+promoGenre.textContent = "драма";
+promoAdv.remove();
